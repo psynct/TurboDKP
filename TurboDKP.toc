@@ -1,0 +1,17 @@
+﻿## Interface: 11304
+## Title: Turbo DKP
+## Author: psynct
+## Version: 1.0.0
+## Notes: An extremely lightweight dkp bidding addon to be used by the loot master of the raid
+## SavedVariables: TurboDKPDB
+
+embeds.xml
+Locale\Locales.xml
+HelperFunctions.lua
+Modules\xml\BidFrame.xml
+TurboDKP.lua
+Modules\Importer.lua
+Modules\Parser.lua
+Modules\UI.lua
+Modules\WinnerCalculator.lua
+Modules\Tests.lua

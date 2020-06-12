@@ -1,0 +1,118 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+    <Frame name="BidItemTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="153" y="37"/>
+        </Size>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentSlotTexture" parentKey="SlotTexture" file="Interface\Buttons\UI-EmptySlot">
+                    <Size x="64" y="64"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="-13" y="13"/>
+                    </Anchors>
+                </Texture>
+                <Texture name="$parentNameFrame" file="Interface\QuestFrame\UI-QuestItemNameFrame">
+                    <Size x="124" y="64"/>
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="$parentSlotTexture" relativePoint="RIGHT" x="-20" y="0"/>
+                    </Anchors>
+                </Texture>
+                <FontString name="$parentName" inherits="GameFontNormalSmall" text="Item Name" justifyH="LEFT">
+                    <Size x="90" y="30"/>
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="$parentNameFrame" x="15" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+    <Frame name="PlayerBidItemTemplate" inherits="BidItemTemplate" virtual="true">
+        <Frames>
+            <Button name="$parentItemButton" inherits="ItemButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent"/>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        self:RegisterForDrag("LeftButton");
+                        self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+                        self:SetFrameLevel(self:GetFrameLevel() + 2);
+                    </OnLoad>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+    <Frame name="TurboDKP_BidFrame" inherits="ButtonFrameTemplate" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+        <Size x="200" y="400"/>
+        <Attributes>
+            <Attribute name="UIPanelLayout-defined" type="boolean" value="true"/>
+            <Attribute name="UIPanelLayout-enabled" type="boolean" value="true"/>
+            <Attribute name="UIPanelLayout-area" type="string" value="left"/>
+            <Attribute name="UIPanelLayout-pushable" type="number" value="5"/>
+            <Attribute name="UIPanelLayout-whileDead" type="boolean" value="true"/>
+        </Attributes>
+        <Layers>
+            <Layer level="OVERLAY" textureSubLevel="-1">
+                <Texture name="BidFramePlayerPortrait">
+                    <Size x="60" y="60"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="-5" y="5"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame name="BidPlayerItem1" inherits="PlayerTradeItemTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="14" y="-89"/>
+                </Anchors>
+            </Frame>
+            <Frame name="BidPlayerItem2" inherits="PlayerTradeItemTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidPlayerItem1" relativePoint="BOTTOMLEFT" x="0" y="-7"/>
+                </Anchors>
+            </Frame>
+            <Frame name="BidPlayerItem3" inherits="PlayerTradeItemTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidPlayerItem2" relativePoint="BOTTOMLEFT" x="0" y="-7"/>
+                </Anchors>
+            </Frame>
+            <Frame name="BidPlayerItem4" inherits="PlayerTradeItemTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidPlayerItem3" relativePoint="BOTTOMLEFT" x="0" y="-7"/>
+                </Anchors>
+            </Frame>
+            <Frame name="BidPlayerItem5" inherits="PlayerTradeItemTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidPlayerItem4" relativePoint="BOTTOMLEFT" x="0" y="-7"/>
+                </Anchors>
+            </Frame>
+            <Frame name="BidPlayerItem6" inherits="PlayerTradeItemTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidPlayerItem5" relativePoint="BOTTOMLEFT" x="0" y="-7"/>
+                </Anchors>
+            </Frame>
+            <Button name="BidFrameAcceptButton" inherits="UIPanelButtonTemplate" text="Start Bidding">
+                <Size x="85" y="22"/>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT" relativeTo="TurboDKP_BidFrame" relativePoint="BOTTOMRIGHT" x="-85" y="5"/>
+                </Anchors>
+                <ButtonText text="Start Bidding"/>
+                <NormalFont style="GameFontNormal"/>
+                <HighlightFont style="GameFontHighlight"/>
+                <DisabledFont style="GameFontDisable"/>
+            </Button>
+            <Button name="BidFrameCancelButton" inherits="UIPanelButtonTemplate" text="Cancel">
+                <Size x="77" y="22"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="BidFrameAcceptButton" relativePoint="TOPRIGHT" x="3" y="0"/>
+                </Anchors>
+                <ButtonText text="Cancel"/>
+                <NormalFont style="GameFontNormal"/>
+                <HighlightFont style="GameFontHighlight"/>
+                <DisabledFont style="GameFontDisable"/>
+            </Button>
+        </Frames>
+    </Frame>
+</Ui>
